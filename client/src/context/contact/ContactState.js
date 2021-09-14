@@ -38,7 +38,8 @@ const ContactState = props => {
       }
     ],
 
-    current: null
+    current: null,
+    filtered: null
   };
 
 
@@ -50,7 +51,6 @@ const ContactState = props => {
     contact.id = uuid.v4();
     dispatch({ type: ADD_CONTACT, payload: contact });
   }
-
 
   // Delete Contact
   const deleteContact = id => {
@@ -68,23 +68,35 @@ const ContactState = props => {
   }
 
   // Update Contact
-
+  const updateContact = contact => {
+    dispatch({ type: UPDATE_CONTACT, payload: contact });
+  }
 
   // Filter Contacts
-
+  const filterContacts = text => {
+    dispatch({ type: FILTER_CONTACTS, payload: text });
+  }
 
   // Clear Filter
-
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  }
 
   return (
-    <ContactContext.Provider value={{
-      contacts: state.contacts,
-      current: state.current,
-      addContact,
-      deleteContact,
-      setCurrent,
-      clearCurrent
-    }}>
+    <ContactContext.Provider
+      value={{
+        contacts: state.contacts,
+        current: state.current,
+        filtered: state.filtered,
+        addContact,
+        updateContact,
+        deleteContact,
+        setCurrent,
+        clearCurrent,
+        filterContacts,
+        clearFilter
+      }}
+    >
       {props.children}
     </ContactContext.Provider>
   )
