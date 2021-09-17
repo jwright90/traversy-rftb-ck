@@ -2,7 +2,8 @@
   "name": "contact-keeper",
   "version": "1.0.0",
   "engines": {
-    "node": "14.17.1"
+    "node": "14.17.1",
+    "npm": "7.20.2"
   },
   "description": "Contact manager app",
   "main": "index.js",
