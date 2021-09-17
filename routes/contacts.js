@@ -46,7 +46,7 @@ router.post('/', [auth, [
 // @route   PUT   api/contacts/:id
 // @desc    Update contact
 // @access  Public
-router.put('/:_id', auth, async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
   const { name, email, phone, type } = req.body;
 
   const contactFields = {};
@@ -79,7 +79,7 @@ router.put('/:_id', auth, async (req, res) => {
 // @route   DELETE   api/contacts/:id
 // @desc    Delete contact
 // @access  Public
-router.delete('/:_id', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     let contact = await Contact.findById(req.params.id);
     if (!contact) return res.status(404).json({ msg: 'Contact not found...' });
@@ -90,7 +90,6 @@ router.delete('/:_id', auth, async (req, res) => {
     }
 
     await Contact.findByIdAndRemove(req.params.id);
-
     res.json({ msg: 'Contact removed' });
 
   } catch (err) {
