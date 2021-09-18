@@ -39,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://pure-retreat-08055.herokuapp.com/"
+  "proxy": "http://locahost:5000"
 }
